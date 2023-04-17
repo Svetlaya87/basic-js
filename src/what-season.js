@@ -12,38 +12,48 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  let result = '';
-    
-    let strDate = date.toLocaleDateString().split('.').map(el => el*1);
-    console.log(strDate);
+  if( arguments.length == 0){
 
-    if( arguments[0] == 0){
+    //console.log('Unable to determine the time of year!');
+    return 'Unable to determine the time of year!';
+  }
 
-        console.log('Unable to determine the time of year!');
-        return 'Unable to determine the time of year!';
-    }
+if( Object.prototype.toString.call(date) !== '[object Date]' ){
 
-    // [31, 3, 2020]
-    if( date.getFullYear() !== strDate[2] || date.getMonth() !== strDate[1] || date.getDate() !== strDate[0]  ){
+  //console.log('Invalid date!');
+  throw new Error('Invalid date!');
 
-        console.log('Invalid date!');
-        return 'Invalid date!';
-    }
+}
 
-    if (strDate[1] ==1 || strDate[1] == 2 || strDate[1] ==12 ){
-     
-        result = 'winter';
+let result = '';
+//console.log(date+'начальное значение');
 
-    }else if (strDate[1] ==3 || strDate[1] == 4 || strDate[1] ==5 ){
-        result = 'spring';
-    }else if (strDate[1] ==6 || strDate[1] == 7 || strDate[1] ==8 ){
-        result = 'summer';
-    } else if (strDate[1] ==9 || strDate[1] == 10 || strDate[1] ==11 ){
-        result = 'fall';
-    }
 
-    console.log(result);
-    return result;
+let arrDate = [];
+
+arrDate.push( date.getDate() );
+arrDate.push( date.getMonth()+1 );
+arrDate.push( date.getFullYear() );
+
+
+//console.log( arguments[0] );
+
+
+if (arrDate[1] ==1 || arrDate[1] == 2 || arrDate[1] ==12 ){
+ 
+    result = 'winter';
+
+}else if (arrDate[1] ==3 || arrDate[1] == 4 || arrDate[1] ==5 ){
+    result = 'spring';
+}else if (arrDate[1] ==6 || arrDate[1] == 7 || arrDate[1] ==8 ){
+    result = 'summer';
+} else if (arrDate[1] ==9 || arrDate[1] == 10 || arrDate[1] ==11 ){
+    result = 'fall';
+}
+
+//console.log(result);
+return result;
+  
 }
 
 module.exports = {

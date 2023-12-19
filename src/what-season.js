@@ -12,7 +12,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  if( arguments.length == 0){
+  
+  
+  if( !date){
 
     //console.log('Unable to determine the time of year!');
     return 'Unable to determine the time of year!';
@@ -20,8 +22,10 @@ function getSeason(date) {
 
 if( Object.prototype.toString.call(date) !== '[object Date]' ){
 
+  
   //console.log('Invalid date!');
   throw new Error('Invalid date!');
+  //return 'Invalid date!';
 
 }
 
@@ -53,6 +57,7 @@ if (arrDate[1] ==1 || arrDate[1] == 2 || arrDate[1] ==12 ){
 
 //console.log(result);
 return result;
+
   
 }
 

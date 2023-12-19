@@ -14,6 +14,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function createDreamTeam(arr) {
+  if(!arr){
+    return false;
+  }
   let name = [];
     for(let i=0; i<arr.length; i++){
         if( typeof(arr[i]) == 'string' ){
@@ -26,11 +29,17 @@ function createDreamTeam(arr) {
         }
     }
 
-    console.log(name);
-    name.sort();
-    name = name.join('');
-    console.log(name);
-    return name;
+    if(!name.length){
+      return false;
+    }else {
+      console.log(name);
+      name.sort();
+      name = name.join('');
+      console.log(name);
+      return name;
+    }
+
+   
 }
 
 module.exports = {

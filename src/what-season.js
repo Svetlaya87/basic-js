@@ -20,6 +20,12 @@ function getSeason(date) {
     return 'Unable to determine the time of year!';
   }
 
+  try{
+    isNaN(date);
+} catch{
+    throw new Error('Invalid date!');
+}
+
 if( Object.prototype.toString.call(date) !== '[object Date]' ){
 
   
